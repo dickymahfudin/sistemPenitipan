@@ -1,0 +1,85 @@
+<form method="<%= value.method %>" action="<%= value.action %>">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group">
+        <label>Name</label>
+        <input
+          type="text"
+          name="name"
+          class="form-control"
+          placeholder="Username"
+          value="<%= value.name %>"
+          required
+        />
+      </div>
+    </div>
+
+    <div class="col-md-12">
+      <div class="form-group">
+        <label>Address</label>
+        <input
+          type="text"
+          name="address"
+          class="form-control"
+          placeholder="Address"
+          value="<%= value.address %>"
+        />
+      </div>
+    </div>
+
+    <div class="col-md-12">
+      <div class="form-group">
+        <label>Phone</label>
+        <input
+          type="text"
+          name="phone"
+          class="form-control"
+          placeholder="Phone"
+          value="<%= value.phone %>"
+        />
+      </div>
+    </div>
+
+    <% if(value.edit !== true) { %>
+    <div class="col-md-12">
+      <div class="form-group">
+        <label>Expired</label>
+        <input
+          class="form-control"
+          name="expired"
+          type="date"
+          id="example-date-input"
+          value="<%= value.expired %>"
+          min="<%= value.min %>"
+        />
+      </div>
+    </div>
+    <%}%>
+
+    <div class="col-md-12">
+      <div class="form-group">
+        <label>Uid</label>
+        <input
+          type="text"
+          name="uid"
+          readonly
+          class="form-control"
+          placeholder="Uid"
+          value="<%= value.uid %>"
+        />
+      </div>
+    </div>
+
+    <div class="col-md-12">
+      <div class="form-group">
+        <label>Member</label>
+        <select name="member" class="form-control form-control-lg">
+          <option disabled selected value>-- Member --</option>
+          <% const member =  value.member && "selected" %>
+          <% const nonmember =  !value.member ? "selected" : ""; %>
+          <option <%=member %> value="1">Member</option>
+          <option <%=nonmember %> value="0">Non Member</option>
+        </select>
+    </div>
+  </div>
+</form>

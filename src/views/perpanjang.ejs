@@ -1,0 +1,81 @@
+<div class="card">
+  <div class="card-body">
+    <div class="row justify-content-md-center mb-4">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>User</label>
+          <select
+            id="member"
+            name="member"
+            class="form-control form-control-lg"
+          >
+            <option disabled selected value>-- User --</option>
+            <% users.forEach( user => { %>
+            <option value="<%= user.id %>"><%= user.name%></option>
+            <% }) %>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-md-center mb-4">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Quantity</label>
+          <select
+            id="quantity"
+            required
+            name="quantity"
+            class="form-control form-control-lg"
+          >
+            <option disabled selected value>-- Quantity --</option>
+            <option value="1">1 Day</option>
+            <option value="2">1 Month</option>
+            <option value="3">2 Month</option>
+            <option value="4">3 Month</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-md-center mb-4">
+      <button id="submit" type="button" class="btn-lg btn btn-primary">
+        Primary
+      </button>
+    </div>
+
+    <div id="detail" class="row justify-content-md-center d-none">
+      <div class="col-md-6">
+        <table class="table">
+          <tbody>
+            <tr>
+              <th scope="row">Name</th>
+              <td id="name"></td>
+            </tr>
+            <tr>
+              <th scope="row">Address</th>
+              <td id="address"></td>
+            </tr>
+            <tr>
+              <th scope="row">Phone</th>
+              <td id="phone"></td>
+            </tr>
+            <tr>
+              <th scope="row">Expired</th>
+              <td id="expired"></td>
+            </tr>
+            <tr>
+              <th scope="row">Uid</th>
+              <td id="uid"></td>
+            </tr>
+            <tr>
+              <th scope="row">Member</th>
+              <td id="memberTd"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="/js/perpanjang.js"></script>

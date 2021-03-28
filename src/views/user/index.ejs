@@ -1,0 +1,72 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <a
+          id="add"
+          href="/user/form"
+          class="modal-open btn btn-primary btn-round"
+          type="submit"
+          data-placement="bottom"
+          title="Tambah Data"
+        >
+          Tambah Data
+        </a>
+      </div>
+      <div class="card-body">
+        <table
+          id="table"
+          class="table table-striped table-bordered"
+          style="width: 100%"
+        >
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Address</th>
+              <th>Phone</th>
+              <th>Expired</th>
+              <th>UID</th>
+              <th>Member</th>
+              <th>Edit</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% users.forEach( user => { %>
+            <tr>
+              <td><%= user.name %></td>
+              <td><%= user.address %></td>
+              <td><%= user.phone %></td>
+              <td><%= user.expired %></td>
+              <td><%= user.uid %></td>
+              <td><%= user.member %></td>
+              <td>
+                <a
+                  id="<%= user.id %>"
+                  href="/user/form"
+                  class="modal-open btn btn-warning"
+                  type="submit"
+                  data-toggle="modal"
+                  data-target="#modal"
+                  data-toggle="tooltip"
+                  data-placement="bottom"
+                  title="Edit <%= user.name %>"
+                >
+                  <i class="fas fa-edit"></i>
+                </a>
+              </td>
+            </tr>
+
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+      <div class="card-footer">
+        <hr />
+        <div class="stats"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/js/user/index.js"></script>
+<%- include('../modal.ejs') %>
