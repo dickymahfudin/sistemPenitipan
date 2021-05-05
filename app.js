@@ -4,14 +4,27 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const expressLayouts = require("express-ejs-layouts");
+const session = require("express-session");
 
 require("dotenv").config();
 
 const indexRouter = require("./src/routes/index");
 const usersRouter = require("./src/routes/users");
 const perpanjangRouter = require("./src/routes/perpanjang");
+const historyRouter = require("./src/routes/history");
+const loginRouter = require("./src/routes/login");
+const midleware = require("./src/midleware");
 
 const app = express();
+app.use(
+  session({
+    cookie: { maxAge: 6000000 },
+    store: new session.MemoryStore(),
+    saveUninitialized: true,
+    resave: "true",
+    secret: "secret",
+  })
+);
 
 // view engine setup
 app.set("views", path.join(__dirname, "src/views"));
@@ -25,9 +38,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/", indexRouter);
-app.use("/user", usersRouter);
-app.use("/perpanjang", perpanjangRouter);
+app.use("/dashboard", midleware, indexRouter);
+app.use("/user", midleware, usersRouter);
+app.use("/perpanjang", midleware, perpanjangRouter);
+app.use("/api/history", historyRouter);
+app.use("/login", loginRouter);
+
+app.get("*", midleware, (req, res) => res.redirect("/dashboard"));
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

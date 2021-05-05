@@ -15,10 +15,10 @@
 // console.log(username);
 // console.log(new Date());
 
-const now = new Date("03-27-2020 10:00:00");
-const ler = new Date("03-25-2021");
+const now = new Date();
+const ler = new Date("2021-03-30 20:57:11");
 
 console.log(now.getTime());
 console.log(ler.getTime());
-console.log(Date.now() >= ler.getTime());
+console.log(now.getTime() >= ler.getTime());
 // console.log(new Date().getTime() >= );

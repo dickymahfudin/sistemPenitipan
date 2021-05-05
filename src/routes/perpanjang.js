@@ -4,7 +4,7 @@ const { user } = require("../models");
 const Sequelize = require("sequelize");
 
 router.get("/", async (req, res, next) => {
-  const users = await user.findAll();
+  const users = await user.findAll({ order: [["name", "ASC"]] });
   res.render("perpanjang", { title: "perpanjang", users });
 });
 
