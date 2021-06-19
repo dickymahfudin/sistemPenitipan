@@ -35,15 +35,15 @@ module.exports = {
       },
     });
 
-    await queryInterface.bulkInsert("histories", [
-      {
-        user_id: 1,
-        loker: 1,
-        status: false,
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
-    ]);
+    // await queryInterface.bulkInsert("histories", [
+    //   {
+    //     user_id: 1,
+    //     loker: 1,
+    //     status: false,
+    //     createdAt: new Date(),
+    //     updatedAt: new Date(),
+    //   },
+    // ]);
   },
   down: async (queryInterface, Sequelize) => {
     await queryInterface.dropTable("histories");

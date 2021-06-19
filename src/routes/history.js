@@ -35,7 +35,7 @@ router.get("/user", async (req, res, next) => {
   const findUsers = await user.findOne({ where: { uid } });
   if (!findUsers) {
     const findkartu = await kartu.findByPk(1);
-    await findkartu.update({ name: uid });
+    await findkartu.update({ name: uid, status: false });
     return res.status(404).json({
       status: "error",
       message: "UID Berasil Ditambhkan",

@@ -40,28 +40,28 @@ module.exports = {
         type: Sequelize.DATE,
       },
     });
-    let dataFaker = [];
-    for (let i = 0; i < 10; i++) {
-      const name = `${faker.name.firstName()} ${faker.name.lastName()}`;
-      const address = `${faker.address.stateAbbr()}, ${faker.address.city()}, ${faker.address.zipCode()}`;
-      const phone = faker.phone.phoneNumber();
-      const expired = faker.date.between("2021-04-01", "2021-04-20");
-      const uid = faker.random.alpha({ count: 10, upcase: true });
-      const member = true;
-      const createdAt = new Date();
-      const updatedAt = new Date();
-      dataFaker.push({
-        name,
-        address,
-        phone,
-        uid,
-        member,
-        expired,
-        createdAt,
-        updatedAt,
-      });
-    }
-    await queryInterface.bulkInsert("users", dataFaker);
+    // let dataFaker = [];
+    // for (let i = 0; i < 10; i++) {
+    //   const name = `${faker.name.firstName()} ${faker.name.lastName()}`;
+    //   const address = `${faker.address.stateAbbr()}, ${faker.address.city()}, ${faker.address.zipCode()}`;
+    //   const phone = faker.phone.phoneNumber();
+    //   const expired = faker.date.between("2021-06-01", "2021-07-20");
+    //   const uid = faker.random.alpha({ count: 10, upcase: true });
+    //   const member = true;
+    //   const createdAt = new Date();
+    //   const updatedAt = new Date();
+    //   dataFaker.push({
+    //     name,
+    //     address,
+    //     phone,
+    //     uid,
+    //     member,
+    //     expired,
+    //     createdAt,
+    //     updatedAt,
+    //   });
+    // }
+    // await queryInterface.bulkInsert("users", dataFaker);
   },
   down: async (queryInterface, Sequelize) => {
     await queryInterface.dropTable("users");
